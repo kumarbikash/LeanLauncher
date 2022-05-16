@@ -61,7 +61,6 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_view_list, parent, false);
 
-
         return new ViewHolder(view);
     }
 
