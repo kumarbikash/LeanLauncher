@@ -4,9 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Development/LauncherforSeniors/app/src/main/res/layout/activity_main.xml" value="0.1094224924012158" />
-        <entry key="..\:/Development/LauncherforSeniors/app/src/main/res/layout/fragment_apps_drawer.xml" value="0.12318840579710146" />
-        <entry key="..\:/Development/LauncherforSeniors/app/src/main/res/layout/fragment_home_screen.xml" value="0.12318840579710146" />
+        <entry key="..\:/Development/LauncherforSeniors/app/src/main/res/layout/fragment_apps_drawer.xml" value="0.1" />
+        <entry key="..\:/Development/LauncherforSeniors/app/src/main/res/layout/fragment_home_screen.xml" value="0.1" />
         <entry key="..\:/Development/LauncherforSeniors/app/src/main/res/layout/item_row_view_list.xml" value="0.12318840579710146" />
+        <entry key="..\:/Development/LauncherforSeniors/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.164" />
       </map>
     </option>
   </component>

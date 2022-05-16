@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.ViewHolder> {
@@ -24,7 +28,7 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
     public AppsDrawerAdapter(Context c ) {
         setUpApps(c);
     }
-    public static void setUpApps(Context c){
+    public static void setUpApps(@NonNull Context c){
         PackageManager pManager = c.getPackageManager();
 
         appsList = new ArrayList<>();
@@ -37,16 +41,23 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
             app.label = ri.loadLabel(pManager);
             app.packageName = ri.activityInfo.packageName;
 
-            Log.i(" Log package ",app.packageName.toString());
+//            Log.i(" Log package ",app.packageName.toString());
             app.icon = ri.activityInfo.loadIcon(pManager);
             appsList.add(app);
         }
+        Collections.sort(appsList, new Comparator<AppInfo>() {
+            @Override
+            public int compare(AppInfo appInfo, AppInfo t1) {
+                return appInfo.label.toString().compareTo(t1.label.toString());
+            }
+        });
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //This is what adds the code we've written in here to our target view
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+//        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_view_list, parent, false);
 
@@ -72,7 +83,7 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
         return appsList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView textView;
         public ImageView img;
@@ -83,6 +94,16 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
             //Finds the views from our row.xml
             textView =  itemView.findViewById(R.id.tv_app_name);
             img = itemView.findViewById(R.id.app_icon);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int pos = getAdapterPosition();
+            Context context = v.getContext();
+
+            Intent intent = context.getPackageManager().getLaunchIntentForPackage(appsList.get(pos).packageName.toString());
+            context.startActivity(intent);
         }
     }
 
