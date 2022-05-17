@@ -1,5 +1,7 @@
 package in.co.rwork.launcherforseniors;
 
+import static android.content.Context.BATTERY_SERVICE;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -50,13 +52,8 @@ public class HomeScreenFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-        Intent batteryStatus = requireContext().registerReceiver(null, intentFilter);
-
-        int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-        int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-
-        float batteryPercent = level * 100 / (float) scale;
+        BatteryManager bm = (BatteryManager) requireContext().getSystemService(BATTERY_SERVICE);
+        int batteryPercent = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
 
         TextView tv_battery_level = view.findViewById(R.id.tv_battery_level);
         tv_battery_level.setText(batteryPercent + " %");
