@@ -21,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(new HomeScreenFragment());
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        loadFragment(new HomeScreenFragment());
+    }
+
     private boolean loadFragment(Fragment fragment) {
 
         if (fragment != null) {

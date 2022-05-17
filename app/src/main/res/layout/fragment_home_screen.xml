@@ -17,9 +17,8 @@
         android:textColor="#FFFFFF"
         android:textSize="35sp"
         android:textStyle="bold" />
-
-    <DigitalClock
-        android:id="@+id/dc_1"
+    <TextClock
+        android:id="@+id/tc_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_date"
@@ -28,12 +27,14 @@
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textSize="35sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:format12Hour="hh:mm:ss a">
+    </TextClock>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dc_1"
+        android:layout_below="@id/tc_1"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
