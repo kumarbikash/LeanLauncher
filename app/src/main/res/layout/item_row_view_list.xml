@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:clickable="false">
 
-    <LinearLayout
-        android:clickable="false"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_row"
         android:layout_width="match_parent"
-        android:layout_marginStart="25dp"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:src="@mipmap/ic_launcher"
-            android:id="@+id/app_icon"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#E6FFFFFF"
+        app:cardCornerRadius="10dp"
+        android:padding="10dp">
+        <LinearLayout
             android:clickable="false"
-            android:layout_width="48dp"
-            android:scaleType="centerCrop"
-            android:layout_height="48dp" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="25dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@mipmap/ic_launcher"
+                android:id="@+id/app_icon"
+                android:clickable="false"
+                android:layout_width="48dp"
+                android:scaleType="centerCrop"
+                android:layout_height="48dp" />
+            <TextView
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                android:text="Chrome"
+                android:clickable="false"
+                android:lines="1"
+                android:textSize="35sp"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_app_name"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-
-        <TextView
-            android:layout_marginLeft="16dp"
-            android:layout_width="wrap_content"
-            android:text="Chrome"
-            android:clickable="false"
-            android:lines="1"
-            android:textSize="35sp"
-            android:layout_gravity="center_vertical"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif-medium"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_app_name"/>
-
-    </LinearLayout>
 
 </RelativeLayout>

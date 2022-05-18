@@ -5,18 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#99000000"
     tools:context=".AppsDrawerFragment">
 
     <androidx.cardview.widget.CardView
-        app:cardBackgroundColor="#FFF"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:theme="@style/Theme.LauncherForSeniors"
+        app:cardBackgroundColor="#00FFFFFF">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/appDrawer_recylerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="match_parent" />
 
     </androidx.cardview.widget.CardView>
 
