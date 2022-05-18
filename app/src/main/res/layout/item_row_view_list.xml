@@ -27,20 +27,22 @@
                 android:id="@+id/app_icon"
                 android:clickable="false"
                 android:layout_width="48dp"
+                android:layout_gravity="center_vertical"
                 android:scaleType="centerCrop"
                 android:layout_height="48dp" />
+
             <TextView
-                android:layout_marginLeft="16dp"
+                android:id="@+id/tv_app_name"
                 android:layout_width="wrap_content"
-                android:text="Chrome"
-                android:clickable="false"
-                android:lines="1"
-                android:textSize="35sp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="16dp"
+                android:clickable="false"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-medium"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_app_name"/>
+                android:lines="1"
+                android:text="Chrome"
+                android:textSize="35sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
