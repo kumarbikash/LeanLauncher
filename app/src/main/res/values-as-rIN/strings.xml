@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">লিন লঞ্চাৰ</string>
+    <string name="call">কল কৰা</string>
+    <string name="sms">এছএমএছ</string>
+    <string name="menu">মেনু</string>
+    <string name="speeddial">স্পীড ডায়েল</string>
+</resources>

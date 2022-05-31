@@ -7,12 +7,31 @@
     android:background="#99000000"
     tools:context=".HomeScreenFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal|end"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/icon_setting"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical|end"
+            android:onClick="showSettings"
+            android:padding="5dp"
+            android:src="@drawable/ic_gear"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="35sp"
@@ -32,6 +51,7 @@
     </TextClock>
 
     <LinearLayout
+        android:id="@+id/ll_battery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tc_1"
@@ -41,6 +61,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/icon_battery"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
@@ -56,6 +77,17 @@
             android:textColor="#FFFFFF"
             android:textSize="35sp"
             android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_battery"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
     </LinearLayout>
 
 
@@ -80,13 +112,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="3">
+                android:weightSum="4"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
                 <ImageView
                     android:id="@+id/icon_drawer"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center_horizontal"
-                    android:padding="15dp"
+                    android:padding="5dp"
                     android:src="@drawable/ic_menu_svgrepo_com"
                     app:tint="#512DA8"
                     android:layout_weight="1"/>
@@ -96,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:text="@string/menu"
                     android:textColor="#512DA8"
                     android:textSize="35sp"
@@ -115,13 +149,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="3">
+                android:weightSum="4"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
                 <ImageView
                     android:id="@+id/icon_sms"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center_horizontal"
-                    android:padding="15dp"
+                    android:padding="5dp"
                     android:src="@drawable/ic_ui_text_chat"
                     app:tint="#2196F3"
                     android:layout_weight="1"/>
@@ -131,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:text="@string/sms"
                     android:textColor="#2196F3"
                     android:textSize="35sp"
@@ -150,13 +186,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="3">
+                android:weightSum="4"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
                 <ImageView
                     android:id="@+id/icon_call"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center_horizontal"
-                    android:padding="15dp"
+                    android:padding="5dp"
                     android:src="@drawable/ic_ui_call"
                     app:tint="#4CAF50"
                     android:layout_weight="1"/>
@@ -166,9 +204,47 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:text="@string/call"
                     android:textColor="#4CAF50"
+                    android:textSize="35sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_speeddial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="#E6FFFFFF"
+            app:cardCornerRadius="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="4"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+                <ImageView
+                    android:id="@+id/icon_speeddial"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_phone_speeddial"
+                    app:tint="#FF3D00"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tv_speeddial"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="3"
+                    android:text="@string/speeddial"
+                    android:textColor="#FF3D00"
                     android:textSize="35sp"
                     android:textStyle="bold" />
             </LinearLayout>

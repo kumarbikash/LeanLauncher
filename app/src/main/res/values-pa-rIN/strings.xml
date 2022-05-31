@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ਲੀਨ ਲਾਂਚਰ</string>
+    <string name="menu">ਮੀਨੂ</string>
+    <string name="sms">ਇਸਐਮਇਸ</string>
+    <string name="call">ਕਾਲ</string>
+    <string name="speeddial">ਸਪੀਡ ਡਾਇਲ</string>
+</resources>

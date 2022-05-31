@@ -3,7 +3,10 @@ package in.co.rwork.launcherforseniors;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 
 import java.util.Objects;
@@ -14,11 +17,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        Objects.requireNonNull(getSupportActionBar()).hide();
-
         setContentView(R.layout.activity_main);
         loadFragment(new HomeScreenFragment());
+
+        setDefaultConfigs();
     }
 
     @Override
@@ -45,4 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
         loadFragment(new HomeScreenFragment());
     }
+
+    public void showSettings(View view) {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+
+    private void setDefaultConfigs() {
+        if(UtilityClass.getPref("FontSize", getApplicationContext()) == null) {
+            UtilityClass.putPref("FontSize", "30sp", getApplicationContext());
+        }
+        if(UtilityClass.getPref("IconSize", getApplicationContext()) == null) {
+            UtilityClass.putPref("IconSize", "80dp", getApplicationContext());
+        }
+    }
+
 }

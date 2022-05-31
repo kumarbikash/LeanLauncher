@@ -5,4 +5,8 @@
     <string name="menu">Menu</string>
     <string name="sms">SMS</string>
     <string name="call">Call</string>
+
+    <string name="font_size" translatable="false">Home Screen Text Size:</string>
+    <string name="icon_size" translatable="false">Home Screen Icon Size:</string>
+    <string name="speeddial">Speed Dial</string>
 </resources>

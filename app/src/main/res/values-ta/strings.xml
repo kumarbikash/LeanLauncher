@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">லீன் லாஞ்சர்</string>
+    <string name="menu">மெனு</string>
+    <string name="sms">எஸ்எம்எஸ்</string>
+    <string name="call">கால்</string>
+    <string name="speeddial">ஸ்பீட் டயல்</string>
+</resources>

@@ -41,7 +41,6 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
             app.label = ri.loadLabel(pManager);
             app.packageName = ri.activityInfo.packageName;
 
-//            Log.i(" Log package ",app.packageName.toString());
             app.icon = ri.activityInfo.loadIcon(pManager);
             appsList.add(app);
         }
@@ -56,8 +55,6 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //This is what adds the code we've written in here to our target view
-//        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_view_list, parent, false);
 

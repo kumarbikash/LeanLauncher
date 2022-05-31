@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="in.co.rwork.launcherforseniors">
-<!--    <permission android:name="android.permission.QUERY_ALL_PACKAGES"/>-->
+    <!-- <permission android:name="android.permission.QUERY_ALL_PACKAGES"/> -->
     <queries>
         <intent>
             <action android:name="android.intent.action.MAIN" />
@@ -20,21 +20,26 @@
         android:theme="@style/Theme.LauncherForSeniors"
         tools:targetApi="31">
         <activity
+            android:name=".SpeedDial"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:clearTaskOnLaunch="true"
             android:exported="true"
             android:launchMode="singleTask"
-            android:clearTaskOnLaunch="true"
             android:stateNotNeeded="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
                 <category android:name="android.intent.category.HOME" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <receiver
             android:name=".MainActivity"
             android:exported="true">

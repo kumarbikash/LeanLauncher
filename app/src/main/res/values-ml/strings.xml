@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ലീൻ ലോഞ്ചർ</string>
+    <string name="menu">മെനു</string>
+    <string name="sms">എസ്എംഎസ്</string>
+    <string name="call">വിളി</string>
+    <string name="speeddial">സ്പീഡ് ഡയൽ</string>
+</resources>
