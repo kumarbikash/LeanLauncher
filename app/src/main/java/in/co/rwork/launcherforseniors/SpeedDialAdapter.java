@@ -78,9 +78,10 @@ public class SpeedDialAdapter extends RecyclerView.Adapter<SpeedDialAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         String contactName = speedDials.get(position).contact_name;
+        String contactNumber = speedDials.get(position).contact_number;
 
         TextView textView = holder.textView;
-        textView.setText(contactName);
+        textView.setText(contactName + "\n" + contactNumber);
     }
 
     @Override
