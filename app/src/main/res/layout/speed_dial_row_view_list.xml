@@ -32,8 +32,8 @@
                 android:clickable="false"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-medium"
-                android:textColor="#FF3D00"
                 android:text="Name"
+                android:textColor="#FF3D00"
                 android:textSize="35sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -25,6 +25,9 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
     //private final Context context;
     private static List<AppInfo> appsList;
 
+    private static int fs;
+    private static int is;
+
     public AppsDrawerAdapter(Context c ) {
         setUpApps(c);
     }
@@ -50,6 +53,9 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
                 return appInfo.label.toString().compareTo(t1.label.toString());
             }
         });
+
+        fs = Integer.parseInt(UtilityClass.getPref("FontSize", c).replaceAll("sp",""));
+        is = Integer.parseInt(UtilityClass.getPref("IconSize", c).replaceAll("dp",""));
     }
 
     @NonNull
@@ -72,6 +78,11 @@ public class AppsDrawerAdapter extends RecyclerView.Adapter<AppsDrawerAdapter.Vi
         textView.setText(appLabel);
         ImageView imageView = holder.img;
         imageView.setImageDrawable(appIcon);
+
+        textView.setTextSize(fs);
+        imageView.getLayoutParams().height = is;
+        imageView.getLayoutParams().width = is;
+        imageView.requestLayout();
     }
 
     @Override

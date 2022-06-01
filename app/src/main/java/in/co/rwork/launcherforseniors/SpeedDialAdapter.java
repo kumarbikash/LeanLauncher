@@ -27,6 +27,8 @@ public class SpeedDialAdapter extends RecyclerView.Adapter<SpeedDialAdapter.View
     //private final Context context;
     private static List<SDNumber> speedDials;
 
+    private static int fs;
+
     public SpeedDialAdapter(Context c ) {
         setUpApps(c);
     }
@@ -63,6 +65,8 @@ public class SpeedDialAdapter extends RecyclerView.Adapter<SpeedDialAdapter.View
         if (speedDials.size() == 0) {
             Toast.makeText(c, "No Speed Dials found. \nConfigure Speed Dials in settings. \nPress back to go to Home screen.", Toast.LENGTH_LONG).show();
         }
+
+        fs = Integer.parseInt(UtilityClass.getPref("FontSize", c).replaceAll("sp",""));
     }
 
     @NonNull
@@ -81,7 +85,9 @@ public class SpeedDialAdapter extends RecyclerView.Adapter<SpeedDialAdapter.View
         String contactNumber = speedDials.get(position).contact_number;
 
         TextView textView = holder.textView;
-        textView.setText(contactName + "\n" + contactNumber);
+        textView.setText("\uD83D\uDC64 " + contactName + "\n\u260E " + contactNumber);
+
+        textView.setTextSize(fs);
     }
 
     @Override
