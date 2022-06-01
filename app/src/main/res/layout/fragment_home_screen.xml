@@ -127,8 +127,8 @@
                 <TextView
                     android:id="@+id/tv_drawer"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:layout_marginStart="10dp"
                     android:layout_weight="3"
                     android:text="@string/menu"
@@ -164,8 +164,8 @@
                 <TextView
                     android:id="@+id/tv_sms"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:layout_marginStart="10dp"
                     android:layout_weight="3"
                     android:text="@string/sms"
@@ -201,8 +201,8 @@
                 <TextView
                     android:id="@+id/tv_call"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:layout_marginStart="10dp"
                     android:layout_weight="3"
                     android:text="@string/call"
@@ -239,8 +239,8 @@
                 <TextView
                     android:id="@+id/tv_speeddial"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:layout_marginStart="10dp"
                     android:layout_weight="3"
                     android:text="@string/speeddial"

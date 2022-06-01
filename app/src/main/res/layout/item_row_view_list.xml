@@ -27,15 +27,15 @@
                 android:id="@+id/app_icon"
                 android:clickable="false"
                 android:layout_width="48dp"
-                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
                 android:scaleType="centerCrop"
                 android:layout_height="48dp" />
 
             <TextView
                 android:id="@+id/tv_app_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:layout_marginStart="16dp"
                 android:clickable="false"
                 android:ellipsize="end"

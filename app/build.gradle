@@ -9,8 +9,8 @@ android {
         applicationId "in.co.rwork.launcherforseniors"
         minSdk 23
         targetSdk 32
-        versionCode 7
-        versionName '1.6'
+        versionCode 8
+        versionName '1.7'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
