@@ -85,7 +85,7 @@ public class SpeedDialAdapter extends RecyclerView.Adapter<SpeedDialAdapter.View
         String contactNumber = speedDials.get(position).contact_number;
 
         TextView textView = holder.textView;
-        textView.setText("\uD83D\uDC64 " + contactName + "\n\u260E " + contactNumber);
+        textView.setText("☞ " + contactName + "\n✆ " + contactNumber);
 
         textView.setTextSize(fs);
     }
