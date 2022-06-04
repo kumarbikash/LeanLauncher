@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:backgroundTintMode="add"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/constraint_layout1">
 
             <TextView
                 android:id="@+id/tv_font_size"
@@ -163,6 +164,8 @@
             <View
                 android:id="@+id/view3"
                 style="@style/Divider.Horizontal"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lview_list" />

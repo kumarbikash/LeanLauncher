@@ -1,6 +1,8 @@
 package in.co.rwork.launcherforseniors;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -197,7 +199,7 @@ public class Settings extends AppCompatActivity {
         }
 
         ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight + ((listView.getDividerHeight()) * (listAdapter.getCount())) + 100;
+        params.height = totalHeight + ((listView.getDividerHeight()) * (listAdapter.getCount())) + 50;
 
         listView.setLayoutParams(params);
         listView.requestLayout();
