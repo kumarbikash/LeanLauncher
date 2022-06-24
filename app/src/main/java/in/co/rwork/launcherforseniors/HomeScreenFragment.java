@@ -173,39 +173,49 @@ public class HomeScreenFragment extends Fragment {
 
     private void refreshBatteryIcon(int batteryLevel, View v) {
         ImageView iv_battery = v.findViewById(R.id.icon_battery);
-        if (batteryLevel > 0 && batteryLevel <= 10) {
-            iv_battery.setImageResource(R.drawable.ic_battery_10);
-        }
-        else if (batteryLevel > 10 && batteryLevel <= 20) {
-            iv_battery.setImageResource(R.drawable.ic_battery_20);
-        }
-        else if (batteryLevel > 20 && batteryLevel <= 30) {
-            iv_battery.setImageResource(R.drawable.ic_battery_30);
-        }
-        else if (batteryLevel > 30 && batteryLevel <= 40) {
-            iv_battery.setImageResource(R.drawable.ic_battery_40);
-        }
-        else if (batteryLevel > 40 && batteryLevel <= 50) {
-            iv_battery.setImageResource(R.drawable.ic_battery_50);
-        }
-        else if (batteryLevel > 50 && batteryLevel <= 60) {
-            iv_battery.setImageResource(R.drawable.ic_battery_60);
-        }
-        else if (batteryLevel > 60 && batteryLevel <= 70) {
-            iv_battery.setImageResource(R.drawable.ic_battery_70);
-        }
-        else if (batteryLevel > 70 && batteryLevel <= 80) {
-            iv_battery.setImageResource(R.drawable.ic_battery_80);
-        }
-        else if (batteryLevel > 80 && batteryLevel <= 90) {
-            iv_battery.setImageResource(R.drawable.ic_battery_90);
-        }
-        else if (batteryLevel > 90 && batteryLevel <= 100) {
-            iv_battery.setImageResource(R.drawable.ic_battery_100);
+        if (isPowerConnected(requireContext())) {
+            iv_battery.setImageResource(R.drawable.ic_battery_charging);
         }
         else {
-            iv_battery.setImageResource(R.drawable.ic_battery_empty);
+            if (batteryLevel > 0 && batteryLevel <= 10) {
+                iv_battery.setImageResource(R.drawable.ic_battery_10);
+            }
+            else if (batteryLevel > 10 && batteryLevel <= 20) {
+                iv_battery.setImageResource(R.drawable.ic_battery_20);
+            }
+            else if (batteryLevel > 20 && batteryLevel <= 30) {
+                iv_battery.setImageResource(R.drawable.ic_battery_30);
+            }
+            else if (batteryLevel > 30 && batteryLevel <= 40) {
+                iv_battery.setImageResource(R.drawable.ic_battery_40);
+            }
+            else if (batteryLevel > 40 && batteryLevel <= 50) {
+                iv_battery.setImageResource(R.drawable.ic_battery_50);
+            }
+            else if (batteryLevel > 50 && batteryLevel <= 60) {
+                iv_battery.setImageResource(R.drawable.ic_battery_60);
+            }
+            else if (batteryLevel > 60 && batteryLevel <= 70) {
+                iv_battery.setImageResource(R.drawable.ic_battery_70);
+            }
+            else if (batteryLevel > 70 && batteryLevel <= 80) {
+                iv_battery.setImageResource(R.drawable.ic_battery_80);
+            }
+            else if (batteryLevel > 80 && batteryLevel <= 90) {
+                iv_battery.setImageResource(R.drawable.ic_battery_90);
+            }
+            else if (batteryLevel > 90 && batteryLevel <= 100) {
+                iv_battery.setImageResource(R.drawable.ic_battery_100);
+            }
+            else {
+                iv_battery.setImageResource(R.drawable.ic_battery_empty);
+            }
         }
     }
 
+    private boolean isPowerConnected(Context context) {
+        Intent intent = context.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        int plugged = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
+        return plugged == BatteryManager.BATTERY_PLUGGED_AC || plugged == BatteryManager.BATTERY_PLUGGED_USB;
+    }
 }
