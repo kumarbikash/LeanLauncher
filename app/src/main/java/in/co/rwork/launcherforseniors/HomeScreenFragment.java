@@ -2,7 +2,7 @@ package in.co.rwork.launcherforseniors;
 
 import static android.content.Context.BATTERY_SERVICE;
 
-import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -16,12 +16,10 @@ import androidx.fragment.app.Fragment;
 
 import android.provider.Telephony;
 import android.telecom.TelecomManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +37,10 @@ public class HomeScreenFragment extends Fragment {
     CardView cardViewCall;
     CardView cardViewSpeedDial;
 
+    ImageView imageViewBattery;
+
+    BroadcastReceiver br;
+
     public HomeScreenFragment() {
         // Required empty public constructor
     }
@@ -55,13 +57,21 @@ public class HomeScreenFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        imageViewBattery = view.findViewById(R.id.icon_battery);
+
+        br = new PowerConnectionReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_POWER_CONNECTED);
+        filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        this.requireActivity().registerReceiver(br, filter);
+
         BatteryManager bm = (BatteryManager) requireContext().getSystemService(BATTERY_SERVICE);
         int batteryPercent = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
 
         TextView tv_battery_level = view.findViewById(R.id.tv_battery_level);
         tv_battery_level.setText(batteryPercent + " %");
 
-        refreshBatteryIcon(batteryPercent, view);
+        refreshBatteryIcon();
 
         TextView tv_date = view.findViewById(R.id.tv_date);
         Date d = Calendar.getInstance().getTime();
@@ -107,16 +117,20 @@ public class HomeScreenFragment extends Fragment {
         loadObjectSizes(view);
     }
 
-    private boolean loadFragment(Fragment fragment) {
+    @Override
+    public void onDestroy() {
+        this.requireActivity().unregisterReceiver(br);
+        super.onDestroy();
+    }
+
+    private void loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
             requireActivity().getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container, fragment)
                     .commit();
-            return true;
         }
-        return false;
     }
 
     private void loadObjectSizes(View v) {
@@ -171,45 +185,37 @@ public class HomeScreenFragment extends Fragment {
         iv_speeddial.requestLayout();
     }
 
-    private void refreshBatteryIcon(int batteryLevel, View v) {
-        ImageView iv_battery = v.findViewById(R.id.icon_battery);
-        if (isPowerConnected(requireContext())) {
-            iv_battery.setImageResource(R.drawable.ic_battery_charging);
+    private void refreshBatteryIcon() {
+        BatteryManager bm = (BatteryManager) requireContext().getSystemService(BATTERY_SERVICE);
+        int batteryPercent = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+
+        if (!isPowerConnected(this.requireContext())) {
+            if (batteryPercent > 0 && batteryPercent <= 10) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_10);
+            } else if (batteryPercent > 10 && batteryPercent <= 20) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_20);
+            } else if (batteryPercent > 20 && batteryPercent <= 30) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_30);
+            } else if (batteryPercent > 30 && batteryPercent <= 40) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_40);
+            } else if (batteryPercent > 40 && batteryPercent <= 50) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_50);
+            } else if (batteryPercent > 50 && batteryPercent <= 60) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_60);
+            } else if (batteryPercent > 60 && batteryPercent <= 70) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_70);
+            } else if (batteryPercent > 70 && batteryPercent <= 80) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_80);
+            } else if (batteryPercent > 80 && batteryPercent <= 90) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_90);
+            } else if (batteryPercent > 90 && batteryPercent <= 100) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_100);
+            } else {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_empty);
+            }
         }
         else {
-            if (batteryLevel > 0 && batteryLevel <= 10) {
-                iv_battery.setImageResource(R.drawable.ic_battery_10);
-            }
-            else if (batteryLevel > 10 && batteryLevel <= 20) {
-                iv_battery.setImageResource(R.drawable.ic_battery_20);
-            }
-            else if (batteryLevel > 20 && batteryLevel <= 30) {
-                iv_battery.setImageResource(R.drawable.ic_battery_30);
-            }
-            else if (batteryLevel > 30 && batteryLevel <= 40) {
-                iv_battery.setImageResource(R.drawable.ic_battery_40);
-            }
-            else if (batteryLevel > 40 && batteryLevel <= 50) {
-                iv_battery.setImageResource(R.drawable.ic_battery_50);
-            }
-            else if (batteryLevel > 50 && batteryLevel <= 60) {
-                iv_battery.setImageResource(R.drawable.ic_battery_60);
-            }
-            else if (batteryLevel > 60 && batteryLevel <= 70) {
-                iv_battery.setImageResource(R.drawable.ic_battery_70);
-            }
-            else if (batteryLevel > 70 && batteryLevel <= 80) {
-                iv_battery.setImageResource(R.drawable.ic_battery_80);
-            }
-            else if (batteryLevel > 80 && batteryLevel <= 90) {
-                iv_battery.setImageResource(R.drawable.ic_battery_90);
-            }
-            else if (batteryLevel > 90 && batteryLevel <= 100) {
-                iv_battery.setImageResource(R.drawable.ic_battery_100);
-            }
-            else {
-                iv_battery.setImageResource(R.drawable.ic_battery_empty);
-            }
+            imageViewBattery.setImageResource(R.drawable.ic_battery_charging);
         }
     }
 
@@ -218,4 +224,20 @@ public class HomeScreenFragment extends Fragment {
         int plugged = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
         return plugged == BatteryManager.BATTERY_PLUGGED_AC || plugged == BatteryManager.BATTERY_PLUGGED_USB;
     }
+
+    public class PowerConnectionReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(Objects.equals(intent.getAction(), Intent.ACTION_POWER_CONNECTED)) {
+                imageViewBattery.setImageResource(R.drawable.ic_battery_charging);
+            }
+            else if(Objects.equals(intent.getAction(), Intent.ACTION_POWER_DISCONNECTED)) {
+                refreshBatteryIcon();
+            }
+            else {
+                refreshBatteryIcon();
+            }
+        }
+    }
+
 }

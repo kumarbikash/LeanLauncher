@@ -4,12 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,16 +25,14 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(new HomeScreenFragment());
     }
 
-    private boolean loadFragment(Fragment fragment) {
+    private void loadFragment(Fragment fragment) {
 
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container, fragment)
                     .commit();
-            return true;
         }
-        return false;
     }
 
     @Override
